@@ -30,6 +30,13 @@
 
 > 여러 개의 JSON 객체를 "한 줄에 하나씩" 저장하는 파일 포맷
 
+## SLA (Service Level Agreement, 서비스 수준 계약)
+
+> 이 이벤트는 '이 시간 안에 끝나야 한다'
+> 라는 목표 시간(약속 시간)
+
+배달 서비스에서는 아주 흔하게 쓰임
+
 # ESM vs CommonJS (CJS)
 
 JavsScript 모듈 시스템
