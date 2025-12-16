@@ -7,36 +7,41 @@ const SEGMENTS = [
 	["S6", "PICKED_UP", "DELIVERED"],
 ];
 
-function findTime(events, type) {
-	const ev = events.find((x) => x.event_type === type);
-	return ev ? ev.event_time : null;
+function secondsBetween(a, b) {
+	if (!a || !b) return null;
+	const ms = b.getTime() - a.getTime();
+	if (!Number.isFinite(ms) || ms < 0) return null; // 음수면 비정상으로 null
+	return Math.floor(ms / 1000);
 }
 
 export function calculateLeadTime(timelines) {
 	return timelines.map((t) => {
-		const events = t.events;
-		const segments = {};
+		const idx = t.eventIndex ?? {};
 
+		const segments = {};
 		for (const [code, from, to] of SEGMENTS) {
-			const a = findTime(events, from);
-			const b = findTime(events, to);
-			segments[code] = a && b ? Math.floor((b - a) / 1000) : null;
+			const fromTime = idx[from]?.event_time ?? null;
+			const toTime = idx[to]?.event_time ?? null;
+			segments[code] = secondsBetween(fromTime, toTime);
 		}
 
-		const created = findTime(events, "ORDER_CREATED");
-		const delivered = findTime(events, "DELIVERED");
-		const totalLeadTime =
-			created && delivered
-				? Math.floor((delivered - created) / 1000)
-				: null;
+		const created = idx["ORDER_CREATED"]?.event_time ?? null;
+		const delivered = idx["DELIVERED"]?.event_time ?? null;
+
+		const totalLeadTime = secondsBetween(created, delivered);
+
+		// ✅ A안: dimension을 metrics에 복사해서 aggregateKPI가 그대로 쓰게 함
+		const region = t.dimensions?.region ?? null;
+		const store_id = t.dimensions?.store_id ?? null;
 
 		return {
 			orderId: t.orderId,
-			// 집계에 쓰기 좋게 대표 차원도 같이 올려둘 수 있음(첫 이벤트에서 뽑기)
-			region: events[0]?.region ?? null,
-			store_id: events[0]?.store_id ?? null,
+			region,
+			store_id,
 			segments,
 			totalLeadTime,
+			// (선택) 완료 여부도 같이 내려주면 집계에서 편함
+			isCompleted: t.status?.isCompleted ?? totalLeadTime !== null,
 		};
 	});
 }
