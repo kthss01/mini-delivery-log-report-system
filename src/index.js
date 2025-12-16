@@ -34,6 +34,23 @@ async function main() {
 	const timelines = buildTimeline(events);
 	console.log("[timeline] orders:", timelines.length);
 
+	// ✅ buildTimeline에서 제공하는 상태/이상치 요약(디버깅에 매우 유용)
+	const completed = timelines.filter((t) => t.status?.isCompleted).length;
+	const missingAny = timelines.filter(
+		(t) => (t.anomalies?.missing?.length ?? 0) > 0
+	).length;
+	const duplicateTypesAny = timelines.filter(
+		(t) => (t.anomalies?.duplicateTypes?.length ?? 0) > 0
+	).length;
+	const outOfOrderAny = timelines.filter(
+		(t) => t.anomalies?.outOfOrder
+	).length;
+
+	console.log("[timeline] completed:", completed);
+	console.log("[timeline] missing(any):", missingAny);
+	console.log("[timeline] duplicateTypes(any):", duplicateTypesAny);
+	console.log("[timeline] outOfOrder(any):", outOfOrderAny);
+
 	// 5) Calculate lead times
 	const orderMetrics = calculateLeadTime(timelines);
 	console.log("[leadtime] metrics:", orderMetrics.length);
