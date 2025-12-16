@@ -22,17 +22,21 @@ async function main() {
 
 	// 2) Load
 	const rawEvents = await loadEventLog(inputPath, { format });
+	console.log("[load] rawEvents:", rawEvents.length);
 
 	// 3) Normalize (map + filter)
 	const events = rawEvents
 		.map(normalizeEvent) // 정규화
 		.filter(Boolean); // null 제거(유효하지 않은 이벤트 drop)
+	console.log("[normalize] events:", events.length);
 
 	// 4) Build timelines
 	const timelines = buildTimeline(events);
+	console.log("[timeline] orders:", timelines.length);
 
 	// 5) Calculate lead times
 	const orderMetrics = calculateLeadTime(timelines);
+	console.log("[leadtime] metrics:", orderMetrics.length);
 
 	// 6) Aggregate KPI
 	const kpi = aggregateKPI(orderMetrics, { slaSeconds, groupKey });
