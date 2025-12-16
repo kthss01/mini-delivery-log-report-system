@@ -29,3 +29,93 @@
 ## JSONL (JSON Lines)
 
 > 여러 개의 JSON 객체를 "한 줄에 하나씩" 저장하는 파일 포맷
+
+# ESM vs CommonJS (CJS)
+
+JavsScript 모듈 시스템
+
+## ESM (ECMAScript Modules)
+
+-   JavaScript 공식 표준 모듈 시스템
+-   브라우저 & Node.js 공통
+-   최신 프로젝트에서 권장
+
+### 문법
+
+```js
+// 불러오기
+import fs from 'fs';
+import loadEventLog from './loader/loadEventLog.js';
+
+// 내보내기
+export defaut loadEventLog;
+```
+
+### 파일 확장자 & 설정
+
+#### 방법 1 : package.json
+
+```json
+{
+	"type": "module"
+}
+```
+
+#### 방법 2 : 확장자 사용
+
+-   .mjs
+
+##### 동작 방식
+
+-   정적으로 로드 (실행 전에 구조가 결정됨)
+-   최상위에서만 import 가능
+
+##### 장점
+
+-   브라우저와 동일한 문법
+-   트리 쉐이킹 가능
+-   정적 분석, 타입 추론에 유리
+-   미래 표준
+
+##### 단점
+
+-   설정을 모르면 에러가 자주 남
+-   상대경로에 js 확장자 필수 (Node)
+
+## CommonJS
+
+-   Node.js 의 전통적인 모듈 시스템
+-   오래된 프로젝트, 라이브러리에 아직 많이 사용됨
+
+### 문법
+
+```js
+// 불러오기
+const fs = require("fs");
+const loadEventLog = require("./loader/loadEventLog");
+
+// 내보내기
+module.exports = loadEventLog;
+```
+
+### 파일 확장자
+
+-   .js
+-   pakcage.json에 별도 설정 없음 (기본값)
+
+### 동작 방식
+
+-   런타임에 동기적으로 로드
+-   require() 는 함수라 조건문 안에서도 사용 가능
+
+### 장점
+
+-   설정이 간단
+-   Node.js에서 안정적
+-   학습 난이도 낮음
+
+### 단점
+
+-   브라우저와 문법이 다름
+-   정적 분석이 어려움
+-   최신 JS 생태계 흐름과는 점점 멀어짐
