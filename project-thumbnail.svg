@@ -1,0 +1,75 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">배달 주문 이벤트 로그 분석 프로젝트 썸네일</title>
+  <desc id="desc">배달 주문 이벤트 흐름과 KPI 분석을 시각적으로 표현한 프로젝트 썸네일 이미지</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1200" height="630" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="8"/>
+      <feGaussianBlur stdDeviation="12"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/>
+      <feBlend in2="SourceGraphic" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.22">
+    <circle cx="150" cy="105" r="3" fill="#E2E8F0"/>
+    <circle cx="250" cy="185" r="3" fill="#E2E8F0"/>
+    <circle cx="350" cy="125" r="3" fill="#E2E8F0"/>
+    <circle cx="465" cy="220" r="3" fill="#E2E8F0"/>
+    <circle cx="560" cy="120" r="3" fill="#E2E8F0"/>
+    <circle cx="680" cy="205" r="3" fill="#E2E8F0"/>
+    <circle cx="795" cy="115" r="3" fill="#E2E8F0"/>
+    <circle cx="910" cy="200" r="3" fill="#E2E8F0"/>
+    <circle cx="1030" cy="135" r="3" fill="#E2E8F0"/>
+    <path d="M150 105L250 185L350 125L465 220L560 120L680 205L795 115L910 200L1030 135" stroke="#60A5FA" stroke-width="2" stroke-dasharray="5 9"/>
+  </g>
+
+  <rect x="70" y="85" width="1060" height="460" rx="26" fill="#0B1120" stroke="#334155"/>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="140" width="340" height="290" rx="20" fill="#111827" stroke="#374151"/>
+    <rect x="510" y="140" width="620" height="180" rx="20" fill="#111827" stroke="#374151"/>
+    <rect x="510" y="340" width="620" height="90" rx="20" fill="#111827" stroke="#374151"/>
+  </g>
+
+  <g>
+    <rect x="150" y="190" width="280" height="16" rx="8" fill="#1F2937"/>
+    <rect x="150" y="224" width="240" height="14" rx="7" fill="#1F2937"/>
+    <rect x="150" y="255" width="195" height="14" rx="7" fill="#1F2937"/>
+
+    <rect x="150" y="298" width="64" height="88" rx="8" fill="#2563EB"/>
+    <rect x="228" y="276" width="64" height="110" rx="8" fill="#0EA5E9"/>
+    <rect x="306" y="320" width="64" height="66" rx="8" fill="#22C55E"/>
+    <rect x="384" y="245" width="28" height="141" rx="8" fill="#F59E0B"/>
+  </g>
+
+  <g>
+    <path d="M540 230L640 196L740 208L840 176L940 191L1040 162" stroke="url(#card)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="640" cy="196" r="8" fill="#38BDF8"/>
+    <circle cx="740" cy="208" r="8" fill="#38BDF8"/>
+    <circle cx="840" cy="176" r="8" fill="#38BDF8"/>
+    <circle cx="940" cy="191" r="8" fill="#38BDF8"/>
+    <circle cx="1040" cy="162" r="8" fill="#38BDF8"/>
+
+    <rect x="540" y="360" width="150" height="48" rx="12" fill="#1E3A8A"/>
+    <rect x="705" y="360" width="180" height="48" rx="12" fill="#0E7490"/>
+    <rect x="900" y="360" width="200" height="48" rx="12" fill="#166534"/>
+
+    <text x="615" y="391" text-anchor="middle" fill="#DBEAFE" font-size="18" font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">리드타임</text>
+    <text x="795" y="391" text-anchor="middle" fill="#CFFAFE" font-size="18" font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">병목 구간</text>
+    <text x="1000" y="391" text-anchor="middle" fill="#DCFCE7" font-size="18" font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">운영 KPI</text>
+  </g>
+
+  <text x="120" y="515" fill="#F8FAFC" font-size="54" font-weight="700" font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">배달 주문 이벤트 로그 분석</text>
+  <text x="120" y="555" fill="#94A3B8" font-size="28" font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif">Mini Delivery Log Report System</text>
+</svg>
