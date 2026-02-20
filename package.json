@@ -1,17 +1,18 @@
 {
-	"name": "mini_delivery_log_report_system",
-	"version": "1.0.0",
-	"type": "module",
-	"description": "배달의민족(배민) 스타일의 **배달 주문 이벤트 로그를 분석하여  \r 리드타임, 병목 구간, 운영 KPI를 산출하는 미니 프로젝트**입니다.",
-	"main": "index.js",
-	"directories": {
-		"doc": "docs"
-	},
-	"scripts": {
-		"generate": "node scripts/generateEventLog.js --count=300 --seed=42 --format=jsonl",
-		"run": "node src/index.js"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+  "name": "mini_delivery_log_report_system",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "배달의민족(배민) 스타일의 **배달 주문 이벤트 로그를 분석하여  \r 리드타임, 병목 구간, 운영 KPI를 산출하는 미니 프로젝트**입니다.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "generate": "node scripts/generateEventLog.js --count=300 --seed=42 --format=jsonl",
+    "run": "node src/index.js",
+    "build": "node scripts/buildPages.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
