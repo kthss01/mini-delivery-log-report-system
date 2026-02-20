@@ -100,3 +100,26 @@ docs/
 -   Runtime: Node.js
 -   Data Format: JSONL, CSV
 -   Visualization: Web 기반 대시보드 (확장 예정)
+
+---
+
+## 🌐 GitHub Pages 배포
+
+GitHub Actions를 통해 정적 대시보드를 자동 배포할 수 있습니다.
+
+1. 저장소 **Settings → Pages → Build and deployment**에서 Source를 **GitHub Actions**로 설정
+2. 기본 브랜치(`main`)에 push
+3. Actions의 `Deploy dashboard to GitHub Pages` 워크플로우 완료 후 Pages URL 접속
+
+### 로컬 빌드
+
+```bash
+npm run build
+```
+
+빌드가 완료되면 `dist/` 폴더에 아래 파일이 생성됩니다.
+
+- `dist/index.html`
+- `dist/kpi.json`
+
+`index.html`은 같은 경로의 `kpi.json`을 자동으로 로드하며, 실패 시 파일 업로드로 직접 확인할 수 있습니다.

@@ -257,10 +257,9 @@
 					>
 				</div>
 				<div class="note">
-					로컬 파일을 직접 읽는 방식이라
-					<span class="warn">서버 없이도 동작</span>해. 파이프라인
-					결과가 `output/kpi.json`이라면 파일 선택 버튼으로 그 파일을
-					업로드하면 돼.
+					GitHub Pages 환경에서는 같은 경로의 `kpi.json`을 자동 로드해.
+					자동 로드가 실패하면 파일 선택 버튼으로 `output/kpi.json`을
+					직접 업로드해도 돼.
 				</div>
 			</div>
 
@@ -684,8 +683,25 @@
 				setStatus("샘플 데이터 로드됨", true);
 			});
 
+			async function loadBundledKpi() {
+				try {
+					const res = await fetch("./kpi.json", { cache: "no-store" });
+					if (!res.ok) throw new Error(`HTTP ${res.status}`);
+					const kpi = await res.json();
+					window.__KPI__ = kpi;
+					render(kpi, {
+						groupKey: $("groupKey").value,
+						topN: Number($("topN").value),
+					});
+					setStatus("배포 데이터(kpi.json) 자동 로드 완료", true);
+				} catch (err) {
+					console.warn("[dashboard] bundled kpi load failed", err);
+					setStatus("JSON 업로드 대기", true);
+				}
+			}
+
 			// initial
-			setStatus("JSON 업로드 대기", true);
+			loadBundledKpi();
 		</script>
 	</body>
 </html>
